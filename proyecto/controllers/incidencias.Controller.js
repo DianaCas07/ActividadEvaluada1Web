@@ -1,0 +1,1 @@
+const incidencias = require('../data/incidencias.js')
