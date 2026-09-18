@@ -76,7 +76,7 @@ const listarIncidencia = (req, res) => {
 
 //Punto 4 buscar incidencia por ID
 const obtenerIncidencia = (req, res) => {
-    const { id } = req.params;
+    const id = parseInt(req.params);
     const incidencia = incidencias.find(p => p.id === id);
 
     if (!incidencia) {
@@ -140,10 +140,28 @@ const filtrarIncidencia = (req, res) => {
 
 };
 
+//punto 6
+const eliminarIncidencia = (req, res) => {
+    //get id de la url y convertirla a entero
+    const id = parseInt(req.params.id);
+
+    const index = incidencias.findIndex(incidencias => incidencias.id === id); 
+
+    if(index !== -1){
+        incidencias.splice(index, 1); 
+        res.json({mensaje:"Incidencia eliminada"});
+    } else {
+        res.status(404).json({mensaje: "La incidencia no fue encontrada"});
+    }
+};
+
+
+
 module.exports = {
     crearIncidencia,
     obtenerIncidencia,
     listarIncidencia,
-    filtrarIncidencia
+    filtrarIncidencia,
+    eliminarIncidencia,
 };
 
