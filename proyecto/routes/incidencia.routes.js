@@ -4,7 +4,10 @@ const router = express.Router();
 const{
     crearIncidencia,
     obtenerIncidencia,
-    filtrarIncidencia
+    filtrarIncidencia,
+    eliminarIncidencia,
+    obtenerEstadisticas,
+    clasificarIncidencias
 } = require('../controllers/incidencias.Controller');
 
 // Punto 2: Registrar incidencia
@@ -20,6 +23,6 @@ router.delete('/:id', eliminarIncidencia);
 router.get('/estadisticas', obtenerEstadisticas);
 
 // Punto 8: Clasificar incidencias
-router.get('/:id/clasificacion', clasificarIncidencia)
+router.get('/:id/clasificacion', clasificarIncidencias)
 
 module.exports = router;
