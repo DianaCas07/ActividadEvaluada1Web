@@ -86,7 +86,64 @@ const obtenerIncidencia = (req, res) => {
     res.json(incidencia);
 }
 
-module.exports = {
-    obtenerIncidencia,
-    listarIncidencia
+//Punto 5
+const filtrarIncidencia = (req, res) => {
+
+    const { id } = req.params;
+    const { estado } = req.body;
+
+    const incidencia = incidencias.find(p => p.id === Number(id));
+
+    if (!incidencia) {
+
+        return res.status(404).json({
+            mensaje: "Incidencia no encontrada"
+        });
+
+    }
+    if (typeof estado !== "string" || estado.trim() === "") {
+
+        return res.status(400).json({
+            error: "El estado es obligatorio y no puede estar vacío"
+        });
+
+    }
+
+    switch (estado.trim()) {
+
+        case "Pendiente":
+            incidencia.estado = "Pendiente";
+            break;
+
+        case "En Proceso":
+            incidencia.estado = "En Proceso";
+            break;
+
+        case "Resuelta":
+            incidencia.estado = "Resuelta";
+            break;
+
+        case "Cancelada":
+            incidencia.estado = "Cancelada";
+            break;
+
+        default:
+            return res.status(400).json({
+                error: "Estado no válido"
+            });
+    }
+
+    res.json({
+        mensaje: "Estado de incidencia actualizado correctamente",
+        incidencia: incidencia
+    });
+
 };
+
+module.exports = {
+    crearIncidencia,
+    obtenerIncidencia,
+    listarIncidencia,
+    filtrarIncidencia
+};
+
