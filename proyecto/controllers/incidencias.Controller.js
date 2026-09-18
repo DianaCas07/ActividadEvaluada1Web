@@ -109,7 +109,7 @@ const cambiarEstado = (req, res) => {
 
     }
 
-    switch (estado.trim().toLowerCase()) {
+    switch (estado.trim()) {
 
         case "Pendiente":
             incidencia.estado = "Pendiente";
