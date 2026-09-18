@@ -5,7 +5,7 @@ const{
     crearIncidencia,
     obtenerIncidencia,
     listarIncidencia,
-    filtrarIncidencia,
+    cambiarEstado,
     eliminarIncidencia,
     obtenerEstadisticas,
     clasificarIncidencias
@@ -30,7 +30,7 @@ router.get('/:id', obtenerIncidencia)
 router.get('/', listarIncidencia)
 
 // Punto 5: Cambiar estado
-router.put('/:id/estado', filtrarIncidencia);
+router.put('/:id/estado', cambiarEstado);
 
 // Punto 6: Eliminar incidencia
 router.delete('/:id', eliminarIncidencia);

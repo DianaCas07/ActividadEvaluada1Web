@@ -87,7 +87,7 @@ const obtenerIncidencia = (req, res) => {
 }
 
 //Punto 5
-const filtrarIncidencia = (req, res) => {
+const cambiarEstado = (req, res) => {
 
     const { id } = req.params;
     const { estado } = req.body;
@@ -109,7 +109,7 @@ const filtrarIncidencia = (req, res) => {
 
     }
 
-    switch (estado.trim()) {
+    switch (estado.trim().toLowerCase()) {
 
         case "Pendiente":
             incidencia.estado = "Pendiente";
@@ -219,7 +219,7 @@ module.exports = {
     crearIncidencia,
     obtenerIncidencia,
     listarIncidencia,
-    filtrarIncidencia,
+    cambiarEstado,
     eliminarIncidencia,
     obtenerEstadisticas,
     clasificarIncidencias
