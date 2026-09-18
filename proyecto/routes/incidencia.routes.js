@@ -16,4 +16,7 @@ router.put('/:id/estado', filtrarIncidencia);
 // Punto 6: Eliminar incidencia
 router.delete('/:id', eliminarIncidencia);
 
+// Punto 7: Obtener estadisticas
+router.get('/estadisticas', obtenerEstadisticas);
+
 module.exports = router;
