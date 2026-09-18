@@ -19,4 +19,7 @@ router.delete('/:id', eliminarIncidencia);
 // Punto 7: Obtener estadisticas
 router.get('/estadisticas', obtenerEstadisticas);
 
+// Punto 8: Clasificar incidencias
+router.get('/:id/clasificacion', clasificarIncidencia)
+
 module.exports = router;

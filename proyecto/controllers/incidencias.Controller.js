@@ -76,7 +76,7 @@ const listarIncidencia = (req, res) => {
 
 //Punto 4 buscar incidencia por ID
 const obtenerIncidencia = (req, res) => {
-    const id = parseInt(req.params);
+    const id = parseInt(req.params.id);
     const incidencia = incidencias.find(p => p.id === id);
 
     if (!incidencia) {
@@ -186,6 +186,34 @@ const obtenerEstadisticas = (req, res) => {
     );
 };
 
+//punto 8
+const clasificarIncidencias = (req, res) => {
+    const id = parseInt(req.params.id);
+    const incidencia = incidencias.find(inc => inc.id === id);
+
+    if(!incidencia){
+        return res.status(404).json({mensaje: "Incidencia no encontrada"})
+    }
+
+    let clasificacionResultados = "";
+
+    switch(incidencia.prioridad){
+        case "Alta":
+            clasificacionResultados = "Critica";
+            break;
+        case "Media":
+            clasificacionResultados = "Importante";
+            break;
+        case "Baja":
+            clasificacionResultados = "Baja";
+            break;
+    }
+
+    res.json({
+        id: incidencia.id,
+        clasificacion: clasificacionResultados
+    });
+};
 
 module.exports = {
     crearIncidencia,
@@ -193,6 +221,7 @@ module.exports = {
     listarIncidencia,
     filtrarIncidencia,
     eliminarIncidencia,
-    obtenerEstadisticas
+    obtenerEstadisticas,
+    clasificarIncidencias
 };
 
