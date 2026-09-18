@@ -155,6 +155,36 @@ const eliminarIncidencia = (req, res) => {
     }
 };
 
+//punto 7
+const obtenerEstadisticas = (req, res) => {
+    res.json(
+        incidencias.reduce((acumulador, incidencias) => {
+            acumulador.totalIncidencias ++;
+
+            switch(incidencias.estado){
+                case "Pendiente":
+                    acumulador.pendientes++;
+                    break;
+                case "En Proceso":
+                    acumulador.EnProceso++;
+                    break;
+                case "Resuelta":
+                    acumulador.resueltas++;
+                    break;
+                case "Cancelada":
+                    acumulador.canceladas++;
+                    break;
+            }
+            return acumulador;
+        }, {
+            totalIncidencias: 0,
+            pendientes: 0,
+            EnProceso: 0,
+            resueltas: 0,
+            canceladas: 0
+        })
+    );
+};
 
 
 module.exports = {
@@ -163,5 +193,6 @@ module.exports = {
     listarIncidencia,
     filtrarIncidencia,
     eliminarIncidencia,
+    obtenerEstadisticas
 };
 
