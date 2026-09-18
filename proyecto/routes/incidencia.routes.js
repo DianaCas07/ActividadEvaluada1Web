@@ -6,7 +6,6 @@ const{
     obtenerIncidencia,
     listarIncidencia,
     filtrarIncidencia,
-    listarIncidencia,
     eliminarIncidencia,
     obtenerEstadisticas,
     clasificarIncidencias
