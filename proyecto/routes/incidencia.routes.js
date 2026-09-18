@@ -13,4 +13,7 @@ router.post('/', crearIncidencia);
 // Punto 5: Cambiar estado
 router.put('/:id/estado', filtrarIncidencia);
 
+// Punto 6: Eliminar incidencia
+router.delete('/:id', eliminarIncidencia);
+
 module.exports = router;
