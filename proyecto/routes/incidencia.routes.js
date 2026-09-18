@@ -15,7 +15,7 @@ const{
 router.get('/', listarIncidencia)
 
 //punto 4: obtener incidencia por ID
-router.get('/id', obtenerIncidencia)
+router.get('/:id', obtenerIncidencia)
 
 // Punto 2: Registrar incidencia
 router.post('/', crearIncidencia);
